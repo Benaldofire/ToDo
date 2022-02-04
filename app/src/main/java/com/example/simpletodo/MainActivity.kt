@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -64,19 +65,27 @@ class MainActivity : AppCompatActivity() {
         val inputTextField = findViewById<EditText>(R.id.addTaskField)
         //Get reference to the button and then set an onClickListener
         findViewById<Button>(R.id.add_button).setOnClickListener{
+
             //1. Grab the text the user has inputted into @+id/addTaskField
             val userInputtedTask = inputTextField.text.toString()
 
-            //2. Add the string to our list of tasks: listOfTasks
-            listOfTasks.add(userInputtedTask)
+            //Avoid Empty inputs
+            if (userInputtedTask != ""){
+                //2. Add the string to our list of tasks: listOfTasks
+                listOfTasks.add(userInputtedTask)
 
-            //Notify adapter of update at the end of the list
-            adapter.notifyItemInserted(listOfTasks.size - 1)
+                //Notify adapter of update at the end of the list
+                adapter.notifyItemInserted(listOfTasks.size - 1)
 
-            //3. Reset the text field
-            inputTextField.setText("")
+                //3. Reset the text field
+                inputTextField.setText("")
 
-            saveItems()
+                saveItems()
+            }
+            else {
+
+            }
+
         }
     }
 
