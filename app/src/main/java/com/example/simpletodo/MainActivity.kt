@@ -82,9 +82,6 @@ class MainActivity : AppCompatActivity() {
 
                 saveItems()
             }
-            else {
-
-            }
 
         }
     }
